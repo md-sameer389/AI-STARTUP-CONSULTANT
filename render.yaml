@@ -52,4 +52,4 @@ services:
 databases:
   - name: startup-consultant-db
     databaseName: startup_consultant
-    user: postgres
+    plan: free
