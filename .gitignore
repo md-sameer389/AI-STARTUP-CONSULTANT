@@ -19,6 +19,13 @@ reports/
 .env.development.local
 .env.test.local
 .env.production.local
+backend/.env
+
+# Shell scripts containing local execution setups
+*.sh
+run_celery.sh
+run_fastapi.sh
+verify_and_run.sh
 
 # Node/Next.js dependencies and builds
 node_modules/
