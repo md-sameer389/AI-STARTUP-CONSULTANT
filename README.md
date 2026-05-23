@@ -56,6 +56,14 @@ A production-grade, multi-agent strategic business consulting and validation eng
 
 ---
 
+## 🔑 Environment Setup
+Before running the application, you must configure your environment variables:
+1. Copy [backend/.env.example](file:///c:/Users/sameer/OneDrive/Desktop/AI%20AGENT/backend/.env.example) to `backend/.env` (and/or create a `.env` in the root of the project).
+2. Fill in your real API keys (Groq, Tavily, Cloudinary, etc.) inside the `.env` file.
+3. **CRITICAL**: Never commit the `.env` file or any `.sh` files containing active credentials to version control. The `.gitignore` is pre-configured to ignore these files.
+
+---
+
 ## 🛠️ Local Backend Development Setup
 
 ### 1. Configure Backend Variables
