@@ -1,3 +1,4 @@
+import os
 from typing import AsyncGenerator
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 from sqlalchemy.orm import declarative_base
@@ -5,15 +6,22 @@ from backend.config import get_settings
 
 settings = get_settings()
 
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql+asyncpg://postgres:postgres@127.0.0.1:5432/startup_consultant")
+DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql+asyncpg://")
+
 from sqlalchemy.pool import NullPool
+
+connect_args = {}
+if settings.ENVIRONMENT == "development":
+    connect_args["ssl"] = False
 
 # Create async engine
 engine = create_async_engine(
-    settings.DATABASE_URL,
+    DATABASE_URL,
     echo=settings.ENVIRONMENT == "development",
     future=True,
     poolclass=NullPool,
-    connect_args={"ssl": False}  # Disable SSL negotiation for asyncpg (required for WSL2 portproxy)
+    connect_args=connect_args
 )
 
 # Async session maker

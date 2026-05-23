@@ -1,13 +1,8 @@
+import os
 from celery import Celery
-from backend.config import get_settings
 
-settings = get_settings()
-
-celery_app = Celery(
-    "startup_consultant",
-    broker=settings.REDIS_URL,
-    backend=settings.REDIS_URL
-)
+redis_url = os.getenv("REDIS_URL", "redis://localhost:6379/0")
+celery_app = Celery("tasks", broker=redis_url, backend=redis_url)
 
 # Configuration overrides
 celery_app.conf.update(

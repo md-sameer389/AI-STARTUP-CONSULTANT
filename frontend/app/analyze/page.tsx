@@ -9,7 +9,8 @@ import {
   AlertTriangle, Zap, ArrowRight, Loader2, Mic, FileText
 } from 'lucide-react';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_BASE = `${API_URL}/api/v1`;
 
 // ─── Phase 1: Idea submission form ───────────────────────────────────────────
 function IdeaSubmissionForm({ onJobStarted }: { onJobStarted: (jobId: string) => void }) {

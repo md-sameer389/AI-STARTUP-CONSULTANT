@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Zap, Mail, Lock, UserPlus, AlertCircle, CheckCircle2, Eye, EyeOff, User } from 'lucide-react';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_BASE = `${API_URL}/api/v1`;
 
 export default function RegisterPage() {
   const router = useRouter();

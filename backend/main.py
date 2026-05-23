@@ -31,13 +31,11 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        settings.FRONTEND_URL,
         "http://localhost:3000",
-        "http://127.0.0.1:3000",
-        "http://localhost:3001",
-        "http://127.0.0.1:3001",
+        "https://your-project-name.vercel.app",
+        "*",
     ],
-    allow_credentials=True,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -65,12 +63,16 @@ app.include_router(chat.router, prefix="/api/v1")
 
 # Global Health Check
 @app.get("/api/v1/health", status_code=status.HTTP_200_OK, tags=["System"])
-async def health_check():
+async def health_check_v1():
     return {
         "status": "healthy",
         "environment": settings.ENVIRONMENT,
         "api_version": "1.0.0"
     }
+
+@app.get("/health")
+async def health_check():
+    return {"status": "ok", "environment": os.getenv("ENVIRONMENT", "development")}
 
 # Standardized Global Error Response Handler
 @app.exception_handler(Exception)

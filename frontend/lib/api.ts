@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_BASE = `${API_URL}/api/v1`;
 
 // TypeScript Interfaces matching FastAPI schemas
 export interface AnalyzeRequest {

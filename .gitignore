@@ -1,0 +1,29 @@
+# Python virtual environments & caches
+venv/
+venv_linux/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Local databases & uploads
+vector_db/
+reports/
+
+# IDE configs
+.vscode/
+.idea/
+
+# Environment files (sensitive credentials)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Node/Next.js dependencies and builds
+node_modules/
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+.vercel
